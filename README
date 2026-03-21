@@ -1,0 +1,10 @@
+There is terraform for each of the services.
+The terraform will work as long as all of the docker images are kept up to date.
+I don't believe there is a simpler way of managing all of the terraform.
+
+
+AWS Folders will set up the node groups and cluster.
+
+K8S Folders deploy the kubernetes to their respective node groups.
+
+KEDA Folders deploy the scalerobjects for each of the services.
