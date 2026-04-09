@@ -40,6 +40,11 @@ provider "aws" {
   region = "eu-west-1"
 }
 
+data "aws_eks_node_group" "this" {
+  cluster_name    = data.terraform_remote_state.k8s.outputs.cluster_name
+  node_group_name = "FF-clothes"
+}
+
 provider "kubernetes" {
   host                   = data.terraform_remote_state.k8s.outputs.cluster_endpoint
   cluster_ca_certificate = base64decode(data.terraform_remote_state.k8s.outputs.cluster_ca_certificate)
@@ -98,7 +103,7 @@ resource "local_file" "keda_manifests" {
           metricType: AverageValue
           metadata:
             namespace: AWS/EC2
-            expression: "SELECT SUM(NetworkIn) FROM \"AWS/EC2\" WHERE AutoScalingGroupName = 'eks-FF-recom-32ce73f7-1d8c-6681-52f9-a1f5e813e739'"
+            expression: "SELECT SUM(NetworkIn) FROM \"AWS/EC2\" WHERE AutoScalingGroupName = '${data.aws_eks_node_group.this.resources[0].autoscaling_groups[0].name}'"
             metricName: NetworkIn
             metricStatPeriod: "60"
             metricCollectionTime: "120"

@@ -14,3 +14,4 @@ terraform apply -auto-approve
 cd ../../4-FF-User/k8s-tf
 terraform init
 terraform apply -auto-approve
+aws eks update-kubeconfig --region eu-west-1 --name FitFinder

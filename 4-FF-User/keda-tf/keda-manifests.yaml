@@ -26,7 +26,7 @@ spec:
       metricType: AverageValue
       metadata:
         namespace: AWS/EC2
-        expression: "SELECT SUM(NetworkIn) FROM \"AWS/EC2\" WHERE AutoScalingGroupName = 'eks-FF-recom-32ce73f7-1d8c-6681-52f9-a1f5e813e739'"
+        expression: "SELECT SUM(NetworkIn) FROM \"AWS/EC2\" WHERE AutoScalingGroupName = 'eks-FF-user-6eceb900-72a6-3bdf-19c9-6245f9c66769'"
         metricName: NetworkIn
         metricStatPeriod: "60"
         metricCollectionTime: "120"
