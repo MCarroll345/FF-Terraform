@@ -26,9 +26,6 @@ resource "aws_eks_cluster" "cluster" {
     authentication_mode = "API"
   }
 
-  # Ensure that IAM Role permissions are created before and deleted after
-  # the EKS Cluster. Otherwise, EKS will not be able to properly delete
-  # EKS managed EC2 infrastructure such as Security Groups.
   depends_on = [
     aws_iam_role_policy_attachment.AmazonEKSClusterPolicy
   ]

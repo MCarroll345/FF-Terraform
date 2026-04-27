@@ -128,7 +128,7 @@ resource "local_file" "keda_manifests" {
             metricStatPeriod: "60"
             metricCollectionTime: "120"
             metricStat: Sum
-            targetMetricValue: "100000"
+            targetMetricValue: "550000"
             minMetricValue: "0"
             awsRegion: eu-west-1
             identityOwner: keda
